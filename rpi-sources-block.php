@@ -57,7 +57,7 @@ class RpiSourcesBlock
                         'name' => 'quellennachweise',
                         'default' => 'Quellennachweise',
                         'label' => '',
-                        'help' => 'Gib für jedes Bild/Dokument einen Quellennachweis an, sofern du nicht selbst der Urheber/Fotograf bist. Achte bei Fotos bitte darauf, dass keine Gesichter von Kindern darauf identifizierbar sind',
+                        'help' => '',
                         'child_of' => '',
                         'placement' => 'content',
                         'width' => '100',
@@ -72,7 +72,7 @@ class RpiSourcesBlock
                         'type' => 'repeater',
                         'name' => 'quelle',
                         'default' => '',
-                        'label' => '',
+                        'label' => 'Gib für jedes Bild/Dokument einen Quellennachweis an, sofern du nicht selbst der Urheber/Fotograf bist. Achte bei Fotos bitte darauf, dass keine Gesichter von Kindern darauf identifizierbar sind',
                         'help' => '',
                         'child_of' => '',
                         'placement' => 'content',
@@ -169,27 +169,27 @@ class RpiSourcesBlock
             ),
             array(
                 'label' => 'CC-BY',
-                'value' => 'CC-BY',
+                'value' => 'by',
             ),
             array(
                 'label' => 'CC-BY-SA',
-                'value' => 'CC-BY-SA',
+                'value' => 'by-sa',
             ),
             array(
                 'label' => 'CC-BY-NC',
-                'value' => 'CC-BY-NC',
+                'value' => 'by-nc',
             ),
             array(
                 'label' => 'CC-BY-NC-ND',
-                'value' => 'CC-BY-NC-ND',
+                'value' => 'by-nc-nd',
             ),
             array(
                 'label' => 'CC-BY-NC-SA',
-                'value' => 'CC-BY-NC-SA',
+                'value' => 'by-nc-sa',
             ),
             array(
                 'label' => 'CC-BY-ND',
-                'value' => 'CC-BY-ND',
+                'value' => 'by-nd',
             ),
             array(
                 'label' => 'CC0',
@@ -223,8 +223,8 @@ class RpiSourcesBlock
             if (!empty($quelle))
             {
                 echo \'<li>\';
-                echo \'<a href ="\'.$quelle[\'src\'] .\'">\'. $quelle[\'title\'] .\'</a>\';
-                echo \' (\'.$quelle[\'license\'].\')\';
+                echo \'<a href ="\'.$quelle[\'src\'] .\'">\'. $quelle[\'title\'] .\'</a><br/>\';
+                echo RpiSourcesBlock::get_creative_commons_html_by_name($quelle[\'license\']);
                 echo \'</li>\';
             }
         }
@@ -235,6 +235,37 @@ class RpiSourcesBlock
     }
     ?>
     ';
+    }
+
+    static public function get_creative_commons_html_by_name($license)
+    {
+        switch ($license) {
+
+            case 'by':
+            case'by-sa':
+            case 'by-nc':
+            case'by-nc-nd':
+            case 'by-nc-sa':
+            case 'by-nd':
+
+                return
+                    '<a rel="license" href="http://creativecommons.org/licenses/' .
+                    $license
+                    . '/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/' .
+                    $license
+                    . '/4.0/88x31.png" /></a><br/>This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/' .
+                    $license
+                    . '/4.0/">Creative Commons Attribution-ShareAlike 4.0 International License</a>'.
+                    '<br/>'.
+                    '<a href="'.get_permalink().'">'.get_the_title().'</a>'.' von '.get_the_author_posts_link()
+                    ;
+            default:
+                $html =
+                    '<a href="'.get_permalink().'">'.get_the_title().'</a>'.' von '.get_the_author_posts_link(). ' Lizenz: '. $license;
+                break;
+        }
+        return $html;
+
     }
 }
 
