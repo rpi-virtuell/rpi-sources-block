@@ -3,7 +3,7 @@
 Plugin Name: rpi Sources Block
 Plugin URI: https://github.com/rpi-virtuell/rpi-material-input-template
 Description: Wordpress Plugin which adds a new Lazyblock Sources to the Wordpress Editor
-Version: 1.0
+Version: 1.0.1
 Author: Daniel Reintanz
 Author URI: https://github.com/FreelancerAMP
 License: A "Slug" license name e.g. GPL2
@@ -72,7 +72,7 @@ class RpiSourcesBlock
                         'type' => 'repeater',
                         'name' => 'quelle',
                         'default' => '',
-                        'label' => 'Gib für jedes Bild/Dokument einen Quellennachweis an, sofern du nicht selbst der Urheber/Fotograf bist. Achte bei Fotos bitte darauf, dass keine Gesichter von Kindern darauf identifizierbar sind',
+                        'label' => 'Gib für jedes Bild/Dokument einen Quellennachweis an, sofern du nicht selbst Urheber:in/ Fotograf:in bist: Gib für jedes Bild/Dokument einen Quellennachweis an. Achte bei Fotos mit Kindern bitte darauf, dass die Veröffentlichung im Internet durch die Sorgeberechtigten erlaubt ist.',
                         'help' => '',
                         'child_of' => '',
                         'placement' => 'content',
