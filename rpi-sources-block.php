@@ -14,11 +14,23 @@ class RpiSourcesBlock
 {
     function __construct()
     {
-        add_action('init', array($this, 'create_source_block'));
+        add_action('init', array($this, 'create_source_block'),11);
+        add_action('admin_head', function (){
+			?>
+	        <style>
+                .wp-block-lazyblock-reli-quellennachweis .components-base-control__field span div {
+                    text-transform: initial!important;
+                }
+	        </style>
+	        <?php
+		});
+
     }
 
     public function create_source_block()
     {
+
+
         if (function_exists('lazyblocks')) :
 
             $block_id = random_int(10, 99999999);
@@ -83,7 +95,7 @@ class RpiSourcesBlock
                         'required' => 'false',
                         'rows_min' => '',
                         'rows_max' => '',
-                        'rows_label' => 'nichts',
+                        'rows_label' => 'Quellenachweis {{#}}',
                         'rows_add_button_label' => 'Quellennachweis hinzufügen',
                         'rows_collapsible' => 'false',
                         'rows_collapsed' => 'false',
@@ -145,7 +157,7 @@ class RpiSourcesBlock
                 ),
                 'code' => array(
                     'output_method' => 'php',
-                    'editor_html' => '',
+                    'editor_html' => ' ',
                     'editor_callback' => '',
                     'editor_css' => '',
                     'frontend_html' => $this->get_frontend_html(),
