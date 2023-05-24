@@ -287,7 +287,7 @@ class RpiSourcesBlock
     {
         ?>
         <div>
-        <h2><?php echo $icon;?> Bildnachweise</h2>
+        <h2><?php echo $icon;?> Quellennachweise</h2>
         <?php
         echo \'<ul>\';
         foreach( $attributes[\'quelle\'] as $quelle )
