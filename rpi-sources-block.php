@@ -3,7 +3,7 @@
 Plugin Name: rpi Sources Block
 Plugin URI: https://github.com/rpi-virtuell/rpi-material-input-template
 Description: Wordpress Plugin which adds a new Lazyblock Sources to the Wordpress Editor
-Version: 1.2.0
+Version: 1.2.1
 Author: Daniel Reintanz
 Author URI: https://github.com/FreelancerAMP
 License: A "Slug" license name e.g. GPL2
