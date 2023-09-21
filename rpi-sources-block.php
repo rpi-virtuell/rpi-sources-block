@@ -273,7 +273,7 @@ class RpiSourcesBlock
             ),
             array(
                 'label' => 'unbekannt',
-                'value' => 'none',
+                'value' => 'Alle Rechte vorbehalten',
             ),
         );
     }
