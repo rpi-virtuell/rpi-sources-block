@@ -30,21 +30,71 @@ class RpiSourcesBlock
     static public function get_creative_commons_html_by_name($quelle)
     {
 
-            if (empty($quelle['author'])) {
-                $author = get_the_author_posts_link();
-            } else {
-                $author = $quelle['author'];
-            }
-            $license = $quelle['license'];
+        if (empty($quelle['author'])) {
+            $author = get_the_author_posts_link();
+        } else {
+            $author = $quelle['author'];
+        }
+        $license = $quelle['license'];
 
         if (!empty($license)) {
             switch ($license) {
 
                 case 'by':
+                    return
+                        '<a rel="license" href="http://creativecommons.org/licenses/' .
+                        $license
+                        . '/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/' .
+                        $license
+                        . '/4.0/88x31.png" /></a><br/>Dieses Werk ist lizenziert unter einer <a rel="license" href="http://creativecommons.org/licenses/' .
+                        $license
+                        . '/4.0/">Creative Commons Namensnennung 4.0 International Lizenz</a>' .
+                        '<br/>' .
+                        '<a href="' . $quelle['src'] . '">' . $quelle['title'] . '</a>' . ' von ' . $author;
                 case'by-sa':
+                    return
+                        '<a rel="license" href="http://creativecommons.org/licenses/' .
+                        $license
+                        . '/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/' .
+                        $license
+                        . '/4.0/88x31.png" /></a><br/>Dieses Werk ist lizenziert unter einer <a rel="license" href="http://creativecommons.org/licenses/' .
+                        $license
+                        . '/4.0/">Creative Commons Namensnennung - Weitergabe unter gleichen Bedingungen 4.0 International Lizenz</a>' .
+                        '<br/>' .
+                        '<a href="' . $quelle['src'] . '">' . $quelle['title'] . '</a>' . ' von ' . $author;
                 case 'by-nc':
+                    return
+                        '<a rel="license" href="http://creativecommons.org/licenses/' .
+                        $license
+                        . '/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/' .
+                        $license
+                        . '/4.0/88x31.png" /></a><br/>Dieses Werk ist lizenziert unter einer <a rel="license" href="http://creativecommons.org/licenses/' .
+                        $license
+                        . '/4.0/">Creative Commons Namensnennung-Nicht kommerziell 4.0 International Lizenz</a>' .
+                        '<br/>' .
+                        '<a href="' . $quelle['src'] . '">' . $quelle['title'] . '</a>' . ' von ' . $author;
                 case'by-nc-nd':
+                    return
+                        '<a rel="license" href="http://creativecommons.org/licenses/' .
+                        $license
+                        . '/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/' .
+                        $license
+                        . '/4.0/88x31.png" /></a><br/>Dieses Werk ist lizenziert unter einer <a rel="license" href="http://creativecommons.org/licenses/' .
+                        $license
+                        . '/4.0/">Creative Commons Namensnennung - Nicht-kommerziell - Keine Bearbeitung 4.0 International Lizenz</a>' .
+                        '<br/>' .
+                        '<a href="' . $quelle['src'] . '">' . $quelle['title'] . '</a>' . ' von ' . $author;
                 case 'by-nc-sa':
+                    return
+                        '<a rel="license" href="http://creativecommons.org/licenses/' .
+                        $license
+                        . '/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/' .
+                        $license
+                        . '/4.0/88x31.png" /></a><br/>Dieses Werk ist lizenziert unter einer <a rel="license" href="http://creativecommons.org/licenses/' .
+                        $license
+                        . '/4.0/">Creative Commons Namensnennung - Nicht-kommerziell - Weitergabe unter gleichen Bedingungen 4.0 International Lizenz</a>' .
+                        '<br/>' .
+                        '<a href="' . $quelle['src'] . '">' . $quelle['title'] . '</a>' . ' von ' . $author;
                 case 'by-nd':
 
                     return
@@ -52,9 +102,9 @@ class RpiSourcesBlock
                         $license
                         . '/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/' .
                         $license
-                        . '/4.0/88x31.png" /></a><br/>This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/' .
+                        . '/4.0/88x31.png" /></a><br/>Dieses Werk ist lizenziert unter einer <a rel="license" href="http://creativecommons.org/licenses/' .
                         $license
-                        . '/4.0/">Creative Commons Attribution-ShareAlike 4.0 International License</a>' .
+                        . '/4.0/">Creative Commons Namensnennung-Keine Bearbeitung 4.0 International Lizenz</a>' .
                         '<br/>' .
                         '<a href="' . $quelle['src'] . '">' . $quelle['title'] . '</a>' . ' von ' . $author;
                 default:
